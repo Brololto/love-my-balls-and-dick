@@ -1282,7 +1282,7 @@ entity.Debug.OnEntitySpawned = function()
     cue2.Parent = workspace.Claim.RushNew
     cue2.Name = "Idle"
     cue2.SoundId = "rbxassetid://8256091246"
-    cue2.Volume = 10
+    cue2.Volume = 0
     cue2.Pitch = 4
     local shift = Instance.new("PitchShiftSoundEffect")
     shift.Octave = 0.5
@@ -1355,8 +1355,6 @@ end)
 Spawn1()
 
 if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
-    workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Light_Fixtures:Destroy()
-	workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Chandelier:Destroy()
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 -- Create entity
 local entityTable = Spawner.createEntity({
@@ -1416,6 +1414,8 @@ local entityTable = Spawner.createEntity({
 -----[[  Debug -=- Advanced  ]]-----
 entityTable.Debug.OnEntitySpawned = function()
     print("Entity has spawned:", entityTable)
+    workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Light_Fixtures:Destroy()
+	workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Chandelier:Destroy()
 end
 
 entityTable.Debug.OnEntityDespawned = function()
