@@ -1610,8 +1610,19 @@ end
 
 
 spawn(function() --silence cooler
-while wait(3.5) do
-if workspace:FindFirstChild("RushMoving") then
+while wait(215) do
+if workspace.Ambience_Seek.Playing == true then
+			continue
+		end
+		if workspace.Ambience_Figure.Playing == true then
+			continue
+		end
+		if workspace.Ambience_FigureEnd.Playing == true then
+			continue
+		end
+		if workspace.Ambience_FigureStart.Playing == true then
+			continue
+		end
 		local function GetGitSound(GithubSnd,SoundName)
 				local url=GithubSnd
 				if not isfile(SoundName..".mp3") then
@@ -1741,7 +1752,7 @@ entity.Debug.OnEntityDespawned = function()
 Achievements.Get({
     Title = "Eyes Closed Ears Open.",
     Desc = "Don't Out Run me.",
-    Reason = "Survive The Silence As A Rush Replacment",
+    Reason = "Survive The Silence",
     Image = "https://github.com/Brololto/Silence-Badgee/blob/main/Untitled18_20230417182211.png?raw=true",
     })
 end
@@ -1773,7 +1784,6 @@ end
 -- Run the created entity
 Spawner.runEntity(entity)
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
-end
 end
 end)
 
