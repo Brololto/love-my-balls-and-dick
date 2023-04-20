@@ -1609,22 +1609,7 @@ end
 Spawner.runEntity(entityTable)
 end
 
-
-
-spawn(function() --silence cooler
-while wait(215) do
-if workspace.Ambience_Seek.Playing == true then
-			continue
-		end
-		if workspace.Ambience_Figure.Playing == true then
-			continue
-		end
-		if workspace.Ambience_FigureEnd.Playing == true then
-			continue
-		end
-		if workspace.Ambience_FigureStart.Playing == true then
-			continue
-		end
+if workspace:FindFirstChild("RushMoving") then
 		local function GetGitSound(GithubSnd,SoundName)
 				local url=GithubSnd
 				if not isfile(SoundName..".mp3") then
@@ -1786,6 +1771,175 @@ end
 -- Run the created entity
 Spawner.runEntity(entity)
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
+end
+
+spawn(function() --silence cooler
+while wait(3.5) do
+if workspace.Rebound:Destroy() then
+if workspace:FindFirstChild("RushMoving") then
+		local function GetGitSound(GithubSnd,SoundName)
+				local url=GithubSnd
+				if not isfile(SoundName..".mp3") then
+					writefile(SoundName..".mp3", game:HttpGet(url))
+				end
+				local sound=Instance.new("Sound")
+				sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+				return sound
+			end
+game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()            
+game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()            
+wait(2)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+	game.Lighting.MainColorCorrection.Contrast = 1
+	local tween = game:GetService("TweenService")
+	tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+	local TweenService = game:GetService("TweenService")
+	local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(80),{TintColor = Color3.fromRGB(255, 255, 255)})
+	TW:Play()
+    local Spawner = loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/OtherSuff/DoorEntitySpawn%2BSource'))()
+
+
+-- Create entity
+local entity = Spawner.createEntity({
+    CustomName = "Silence", -- Custom name of your entity
+    Model = "12593538544", -- Can be GitHub file or rbxassetid
+    Speed = 600, -- Percentage, 100 = default Rush speed
+    DelayTime = 40, -- Time before starting cycles (seconds)
+    HeightOffset = 100,
+    CanKill = false,
+    NoDieOnCrouching = true,
+    NoHiding = false,
+    AntiCrucifix = true,
+    KillRange = 100,
+    OneRoom = false,
+    DieOnLook = false,
+    BreakLights = false,
+    BackwardsMovement = false,
+     MovementDeath = {
+        true, -- Turned On?
+        '1',  --- '1'= 'Instant Without Being Looked out' | '2' = 'With Being Looked At'
+    },
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        2.5, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+        {
+            Type = "2", -- "Normal" or 1 | "Pop" or 2 | "endlessdoorsrebound" or "Rebound" or 3 | More coming Soon
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                "0", -- SoundId Link or Roblox ID
+                { Volume = 5 }, -- Sound properties
+            },
+            Sound2 = {
+                "0", -- SoundId Link or Roblox ID
+                { Volume = 3 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    Color = 'GuidingLight', -- CuriousLight ( Yellow ) | GuidingLight ( Blue )
+    DiffrentMessages = false,
+    CustomDialog = {  
+        {"You have died To The one named Silence.", "You can't Move When it shushes.", "if stayed Moved he will attack", "He Floats and flickers the light's."}, -- Death Messages
+        {"Stop Dieing"},
+        {"Bruh", "Use what you have learned from Rush!"},
+        {"It seems like Template is causing quite the ruckus...", "Hide in a closet or bed as quickly as possible!"},
+         {"I have told You What to do", "YOU JUST HAVE A SKILL ISSUE"}
+    }
+})
+
+-----[[ Advanced Sctipting ]]-----
+
+entity.Debug.OnEntityMoving = function(Invincible,Hiding,plrCollisionPoint)
+print("Invincible: "..tostring(Invincible))
+print("Player to Entity Collision (None hiding Point): "..tostring(plrCollisionPoint))
+print("Hiding: "..tostring(Hiding))
+end
+       
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:")
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 9
+        local Silly = GetGitSound("https://github.com/Brololto/bing-/blob/main/Screen_Recording_20230419-164136_Chrome%20(online-audio-converter.com).mp3?raw=true","Anotherlove")
+				Silly.Parent = workspace
+				Silly.Volume = 7
+				Silly:Play()
+				        local billy = GetGitSound("https://github.com/Potato032/Entt/blob/main/ClockSoundsCreditsToVynixus.mp3?raw=true","Credit")
+				billy.Parent = workspace
+				billy.Volume = 6
+				billy:Play()
+    workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Light_Fixtures:Destroy()
+	workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.Chandelier:Destroy()
+	wait(38)
+	            local Moving = GetGitSound("https://github.com/Brololto/Silence-MovingV4/blob/main/Screen_Recording_20230419-160803_Chrome%20(online-audio-converter.com).mp3?raw=true","Moving")
+				Moving.Parent = workspace
+				Moving.Volume = 20
+				Moving:Play() 
+end
+
+entity.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:")
+    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- Creates and displays your custom achievement
+Achievements.Get({
+    Title = "Eyes Closed Ears Open.",
+    Desc = "Don't Out Run me.",
+    Reason = "Survive The Silence",
+    Image = "https://github.com/Brololto/Silence-Badgee/blob/main/Untitled18_20230417182211.png?raw=true",
+    })
+end
+
+entity.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:")
+end
+
+entity.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:")
+end
+
+entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+    print("Entity:", "has entered room:",room)
+end
+
+entity.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:")
+end
+
+entity.Debug.OnDeath = function()
+    warn("Player has died.")
+    math.random(5,120)
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to Silence Again...", "it will come after rush trying to replace it.", "it will come to attack when you move", "Hiding Will not work only to get tou killed!"}, "Blue")
+end
+
+------------------------
+
+-- Run the created entity
+Spawner.runEntity(entity)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
+end
+end
 end
 end)
 
@@ -2222,7 +2376,7 @@ local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = Creator.createEntity({
     CustomName = "Rebound", -- Custom name of your entity
     Model = "https://github.com/Brololto/V4ReboundHardcore/blob/main/RebonMoving.rbxm?raw=true", -- Can be GitHub file or rbxassetid
-    Speed = 100, -- Percentage, 100 = default Rush speed
+    Speed = 170, -- Percentage, 100 = default Rush speed
     DelayTime = 1.4, -- Time before starting cycles (seconds)
     HeightOffset = 1,
     CanKill = true,
@@ -2282,6 +2436,8 @@ entity.Debug.OnEntitySpawned = function(entityModel)
     sound.Parent = workspace
     sound.Volume = 3
 	sound:Play()
+wait(15)
+workspace.Rebound:Destroy()
 end
 
 entity.Debug.OnEntityDespawned = function(entityModel)
@@ -2295,6 +2451,7 @@ Achievements.Get({
     Reason = "Encounter Rebound",
     Image = "https://github.com/Brololto/RebounrHardcoreV4Badge/blob/main/20230416_004430.png?raw=true",
     })
+
 end
 
 entity.Debug.OnEntityStartMoving = function(entityModel)
