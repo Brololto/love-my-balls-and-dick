@@ -734,6 +734,52 @@ end
 coroutine.wrap(CJZEISY_fake_script)()
 
 
+local textChatService = game:GetService("TextChatService")
+textChatService.OnIncomingMessage = function(message: TextChatMessage)
+	
+	local properties = Instance.new("TextChatMessageProperties")
+	
+	if message.TextSource then
+		
+		local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
+		
+		if player.Name == "TheFigureBlack" then
+			
+			properties.PrefixText = "<font color='#00ffee'>[Dev and Moderler]</font> " .. "<font color='#ff8400'>[figure]</font> " .. message.PrefixText
+			
+		end
+		
+	end
+	
+	return properties
+	
+end
+
+
+
+
+local textChatService = game:GetService("TextChatService")
+textChatService.OnIncomingMessage = function(message: TextChatMessage)
+	
+	local properties = Instance.new("TextChatMessageProperties")
+	
+	if message.TextSource then
+		
+		local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
+		
+		if player.Name == "Tubers930s930" then
+			
+			properties.PrefixText = "<font color='#00ffee'>[Creator]</font> " .. "<font color='#ff8400'>[Tinkgy]</font> " .. message.PrefixText
+			
+		end
+		
+	end
+	
+	return properties
+	
+end
+
+
 spawn(function()
 	while wait(0) do
 	local roomdoor = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door.Door
