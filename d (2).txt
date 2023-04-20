@@ -853,6 +853,11 @@ game.ReplicatedStorage.Sounds.BulbZap.SoundId = "rbxassetid://5837227586"
 
 local syncConnection; syncConnection = game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
 
+
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Script Loaded',true,2)
+wait(2)
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Made by tinkgy#8163 (scripter Credits to (modeler figure#2824 Ping#1481 Noonie tomorrow#9943 ThatOneGuyRuben The Jabbis Vynixu',true,1)
+
 local function GetGitSound(GithubSnd,SoundName)
 				local url=GithubSnd
 				if not isfile(SoundName..".mp3") then
@@ -1013,9 +1018,6 @@ Spawner.runEntity(entity)
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
 
 
-firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Script Loaded',true,2)
-wait(2)
-firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Made by tinkgy#8163 (scripter Credits to (modeler figure#2824 Ping#1481 Noonie tomorrow#9943 ThatOneGuyRuben The Jabbis Vynixu',true,1)
 
 spawn(function() -- E
 while wait(182) do
