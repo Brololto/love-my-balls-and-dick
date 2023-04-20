@@ -1198,6 +1198,15 @@ if workspace.Ambience_Seek.Playing == true then
 		if workspace.Ambience_FigureStart.Playing == true then
 			continue
 		end
+local function GetGitSound(GithubSnd,SoundName)
+				local url=GithubSnd
+				if not isfile(SoundName..".mp3") then
+					writefile(SoundName..".mp3", game:HttpGet(url))
+				end
+				local sound=Instance.new("Sound")
+				sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+				return sound
+			end
 game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()   
 -- Create entity
 	    local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
@@ -1228,7 +1237,7 @@ TW:Play()
 	    CustomName = "Screamer", -- Custom name of your entity
 	    Model = "11956173551", -- Can be GitHub file or rbxassetid
 	    Speed = 200, -- Percentage, 100 = default Rush speed
-	    DelayTime = 9, -- Time before starting cycles (seconds)
+	    DelayTime = 5, -- Time before starting cycles (seconds)
 	    HeightOffset = 0,
 	    CanKill = true,
 	    BreakLights = false,
@@ -1278,6 +1287,10 @@ TW:Play()
 	-----[[ Advanced ]]-----
 	entity.Debug.OnEntitySpawned = function(entityModel)
 	    print("Entity has spawned:", entityModel)
+local Screamer = GetGitSound("https://github.com/Brololto/Bkucha/blob/main/Screen_Recording_20230420-162342_YouTube%20(online-audio-converter.com).mp3?raw=true","Screamer")
+			Screamer.Parent = workspace
+			Screamer.Volume = 3
+Screamer:Play()
 	end
 	
 	entity.Debug.OnEntityDespawned = function(entityModel)
