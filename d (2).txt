@@ -1704,6 +1704,11 @@ end)
 
 Spawn1 = coroutine.wrap(function()
 while task.wait(3.5) do
+if workspace.Ambience_Seek.Playing == true then
+			continue
+		end
+game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()            
+game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()            
 if workspace:FindFirstChild("RushMoving") then
 local function GetGitSound(GithubSnd,SoundName)
 				local url=GithubSnd
