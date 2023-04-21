@@ -1109,13 +1109,6 @@ end)
 
 
 
-spawn(function()
-while wait(3.5)
-if workspace:FindFirstChild("SeekMoving") then
-workspace.Rebound:Destroy()
-end
-end
-end)
 
 
 
