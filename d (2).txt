@@ -933,6 +933,7 @@ local function GetGitSound(GithubSnd,SoundName)
 		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
 	game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Silence"
 	firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to Silence", "He is supposed to come after rush, to try to mimic him.", "But he gives you a little bit of time so use that for you Advantage.", "he will instanly kill you if you are moving"}, "Blue")
+end
 	
 					
 				
